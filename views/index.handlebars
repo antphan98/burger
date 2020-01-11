@@ -1,6 +1,36 @@
 <div class="head-container">
     <img id="burgerimg" src="assets/img/burger.png" alt="Burger image.">
-    <h1>Benji's Burger Truck</h1>
+    <h1>Bella's Burger Truck</h1>
     <img id="burgerimg2" src="assets/img/burger.png" alt="Burger image.">
 
+</div>
+
+<div class="form">
+
+<form class="burgerform">
+    <input id="burger" type="text" name="burger-name" placeholder="Add a Burger!">
+    <button id="submit-btn" type="submit">Submit</button>
+</form>
+</div>
+
+<div class="burgerlist">
+    <section id="createdburgers">
+        <ul id="burger-list">
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            <li class ="newburgers">
+                <span class ="burgers">
+                    {{this.burger_name}}
+                </span>
+                <span id="devourbutton">
+                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="true">
+                    <button class= "devourbtn" type="submit">Devour!</button>
+                    </form>
+                </span>
+            </li>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </section>
 </div>
