@@ -17,15 +17,14 @@
     <section id="createdburgers">
         <ul id="burger-list">
             {{#each burgers}}
-            {{#unless this.devoured}}
+            {{#unless devoured}}
             <li class ="newburgers">
                 <span class ="burgers">
                     {{this.burger_name}}
                 </span>
                 <span id="devourbutton">
-                    <form action="/{{this.id}}?_method=PUT" method="POST">
-                    <input type="hidden" name="devoured" value="true">
-                    <button class= "devourbtn" type="submit">Devour!</button>
+                    <form class="devour-form" method="POST">
+                    <button class= "devourbtn" data-id="{{id}}">Devour!</button>
                     </form>
                 </span>
             </li>
@@ -33,4 +32,15 @@
             {{/each}}
         </ul>
     </section>
+</div>
+
+<div id="burgers-devoured">
+			<h5>Devoured Burgers</h5>
+			{{#each burgers}}
+				{{#if devoured}}
+				  <div class="burger">{{burger_name}}</div>
+				{{/if}}
+			{{/each}}
+		</div>
+	</section>
 </div>
